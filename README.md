@@ -190,4 +190,7 @@ module.exports = Config;
   ```
   
 # Tests 
-  (wip)
+(wip)
+
+# TODO 
+Make case insensitive
