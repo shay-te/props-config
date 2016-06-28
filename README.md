@@ -11,10 +11,10 @@ and with the properties correct types.
 # So, What do i get ?
 
 * Get all properties values by their true type ('true'/'false' will be a boolean , '11' will be a number)
-* Support javascript function and your specific function (for example get value from environment file ) 
-* Catch an event when a specified rule have been read
+* Run javascript function as a value (for example get Variable value from environment file) 
+* Handle an event when a specified rule have been detected in your configuration file
 * Mark a specific key/rule as mandatory
-* Support for rules using REGEX
+* Detect properties keys using Regular expression
 
 
 # How dose it work ?
