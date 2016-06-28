@@ -186,7 +186,7 @@ var Config = {
 };
 
 
-Config.init();
+Config.init(); //Initialize How ever/When ever you like 
 
 module.exports = Config;
   ```
