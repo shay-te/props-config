@@ -13,7 +13,7 @@ and with the properties correct types.
 * Get all properties values by their true type ('true'/'false' will be a boolean , '11' will be a number)
 * Support javascript function and your specific function (for example get value from environment file ) 
 * Catch an event when a specified rule have been read
-* Mark a specific key/rule as required
+* Mark a specific key/rule as mandatory
 * Support for rules using REGEX
 
 
@@ -87,8 +87,10 @@ http.address=127.0.0.1
 
 ```
 
-Define the rules that matched you configuration file, and pass the 'myProduct.conf' path, and you are Done.
+Define the rules that matched your configuration file, and pass the 'myProduct.conf' path, and you are Done.
+
 now you will have a **SAFE TO USER** get function, to get any value from the configuration file 
+
 (this is a more complex example that also handle group of values. and a sandbox)
 
  ```javascript
@@ -193,4 +195,4 @@ module.exports = Config;
 (wip)
 
 # TODO 
-Make case insensitive
+Support case insensitive
