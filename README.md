@@ -151,8 +151,8 @@ var Config = {
 	_cacheMultiProperties: function(key, value) {
 		/**
 		 * This is the event called from a match on the Rule 'db.server.*'
-		 * we will pull the group key from the rule
-		 * and cache what group are avilable in that file 
+		 * we will pull the group name from the key,
+		 * and cache what group are available in that file 
 		 */
 		var index1 = key.indexOf(".");
 		var index2 = key.indexOf(".", index1+1);
