@@ -2,6 +2,15 @@ var propsReader    = require('properties-reader');
 var vm             = require('vm');
 
 var PropsConfig = function(filePath, propRules, sandbox) {
+	
+	if(filePath == undefined && (typeof filePath) != "string") {
+		throw new Error("filepath is an invalid property, must be a string ");
+	}
+	
+	propRules = propRules || {};
+	sandbox   = sandbox   || {};
+	
+	
 	this.properties = {};
 	
 	this._init = function() {
@@ -19,7 +28,7 @@ var PropsConfig = function(filePath, propRules, sandbox) {
 		var requieredKeys = []; 
 		for(var ruleKey in propRules) {
 			var rule = propRules[ruleKey];
-			if(rule['required'] == true) {
+			if(rule['required'] === true) {
 				requieredKeys.push(ruleKey);
 			}
 		}
@@ -44,7 +53,7 @@ var PropsConfig = function(filePath, propRules, sandbox) {
 				 * GET THE CORRECT VARIABLE BY TYPE 'false'/'true' will be
 				 * converted to false/true '100' will be converted to 100
 				 */
-				var context = new vm.createContext(sandbox || {});
+				var context = new vm.createContext(sandbox);
 				try{
 					// Primitive OR sandbox function OR javascript exprection
 					var script = new vm.Script(scriptString + oldValue + ";");
@@ -90,7 +99,7 @@ var PropsConfig = function(filePath, propRules, sandbox) {
 				 */
 				if(propsValidate['required']) {
 					for(var requireIndex in requieredKeys) {
-						if(propsKey.match(requireKey))  {
+						if(propsKey.match(requieredKeys[requireIndex]))  {
 							break;
 						}
 					}
@@ -113,7 +122,8 @@ var PropsConfig = function(filePath, propRules, sandbox) {
 		}
 	
 		if(requieredKeys.length > 0) {
-			throw new Error("Config file is missing requiered fields [" + requieredKeys.join(", ") + "]");
+			var missingKeys = requieredKeys.join(", ");
+			throw new Error("Config file is missing requiered fields [" + missingKeys + "]");
 		}
 	
 	};

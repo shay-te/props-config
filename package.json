@@ -1,7 +1,7 @@
 {
   "name": "props-config",
-  "version": "0.0.1",
-  "description": "Base class for properties configuration file ",
+  "version": "0.0.3",
+  "description": "Simple API for managing properties configuration file ",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
