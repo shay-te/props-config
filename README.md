@@ -12,4 +12,8 @@ you can do that easly with props-config.
 * event when a specified rule have been read
 * Mark a specifig key/rule as requiered  
 
-# as Example (wip)
+# Example (wip)
+  See example1 under the example folder
+  
+# Tests 
+  (wip)
