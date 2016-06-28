@@ -108,7 +108,10 @@ var PropsConfig = function(filePath, propRules, sandbox) {
 				
 				
 				if(propsValidate['onDetect']) {
-					propsValidate.onDetect(propsKey, newValue);
+					var detectResult = propsValidate.onDetect(propsKey, newValue);
+					if(detectResult === false) {
+						throw new Error("Config file contain invalid value for [" + propsKey + "], Expected:[" + propsValidate.type + "], Got:[" + type + "] (Fail on detection)");
+					}
 				}
 			}
 			

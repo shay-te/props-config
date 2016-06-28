@@ -1,6 +1,9 @@
 var PropConfig  = require('props-config');
 var Environment = {get: function() {return "you env value";}};//require('<path to you env if you have one>/Environment.js');
 
+
+var pathToConfiguration = ".......";
+
 var Config = {
 	_propsConfig: undefined, 
 	_multiProps: {},
@@ -33,7 +36,7 @@ var Config = {
 			}			
 		};
 		
-		this._propsConfig = new PropConfig("/Users/shaytessler/eclipse_workspace/syncDateup/conf/sync.conf", rules, sandbox);
+		this._propsConfig = new PropConfig(pathToConfiguration, rules, sandbox);
 	}, 
 	
 	
