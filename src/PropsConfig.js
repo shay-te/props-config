@@ -10,9 +10,8 @@ var PropsConfig = function(filePath, propRules, sandbox) {
 	propRules = propRules || {};
 	sandbox   = sandbox   || {};
 	
-	
 	this.properties = {};
-	
+
 	this._init = function() {
 		var propertiesObj = propsReader(filePath);
 		
@@ -66,7 +65,6 @@ var PropsConfig = function(filePath, propRules, sandbox) {
 				
 				newValue = sandbox["result"];
 			}
-	
 
 			//Fetch props rule by key string
 			var propsValidate = propRules[propsKey];
@@ -78,7 +76,7 @@ var PropsConfig = function(filePath, propRules, sandbox) {
 				 * run on all rules and find the maching one
 				 */
 				for(var validateKey in propRules) {
-					if(propsKey.match(validateKey))  {
+					if( propsKey.match(new RegExp(validateKey, "i")) )  {
 						propsValidate = propRules[validateKey];
 						break;
 					}
@@ -99,11 +97,13 @@ var PropsConfig = function(filePath, propRules, sandbox) {
 				 */
 				if(propsValidate['required']) {
 					for(var requireIndex in requieredKeys) {
-						if(propsKey.match(requieredKeys[requireIndex]))  {
+						if(propsKey.match(new RegExp(requieredKeys[requireIndex], "i")))  {
 							break;
 						}
 					}
-					requieredKeys.splice(requireIndex, 1);
+					if(requireIndex) {
+						requieredKeys.splice(requireIndex, 1);
+					}
 				}
 				
 				
@@ -120,10 +120,9 @@ var PropsConfig = function(filePath, propRules, sandbox) {
 			 * All passed, update the prop
 			 */
 			this.properties[propsKey] = newValue;
-	
-	
 		}
-	
+		
+		
 		if(requieredKeys.length > 0) {
 			var missingKeys = requieredKeys.join(", ");
 			throw new Error("Config file is missing requiered fields [" + missingKeys + "]");
@@ -132,7 +131,8 @@ var PropsConfig = function(filePath, propRules, sandbox) {
 	};
 	
 	this.get = function(key, defaultValue) {
-		return this.properties[key] || defaultValue;
+		var propValue = this.properties[key];
+		return propValue != undefined ? propValue : defaultValue;
 	};	
 	
 	this._init();

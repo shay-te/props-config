@@ -1,0 +1,11 @@
+key_number=1
+key_string=some string
+key_bool_true=true
+key_bool_false=false
+
+key_sandbox_func=function() {return "sand_box_func";}
+key_sandbox_func_run=function() {return "key_sandbox_func_run";}()
+key_sandbox_math=1+1
+
+key_sandbox_env_key1=env('key1')
+key_sandbox_env_key2=env('key2')

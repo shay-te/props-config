@@ -31,7 +31,7 @@ Simple, you give props-config 3 parameters
 Rule is a simple JSON object that have only 3 options
 ```javascript
 var rules = [
-	"i.am.the.properties.key.*" {//Will match an exact string or a regular expression 
+	"i.am.the.properties.key.*" {//Will match an exact string or a regular expression (rules keys are case insensitive)
 		type: "string"/"number"/"boolean", //This will make sure that if a value was defined, it was with the requested type
 		required: true //Mark this field as a mandatory field
 		onDetect: fooAFunction //Call this function on this rule detection. if returned false, means an invalid config file
@@ -192,7 +192,5 @@ module.exports = Config;
   ```
   
 # Tests 
-(wip)
-
-# TODO 
-Support case insensitive
+To run tests type 
+```javascript npm test ```
