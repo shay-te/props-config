@@ -1,7 +1,6 @@
 var path = require('path');
 
-var PropsConfig = require("../../PropsConfig");
-
+var PropsConfig = require(path.join(__dirname, "../", "src", "PropsConfig.js"));
 
 var pathToConfiguration = path.join(__dirname, "data", "config.poperties");
 
