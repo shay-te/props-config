@@ -193,4 +193,6 @@ module.exports = Config;
   
 # Tests 
 To run tests type 
-```javascript npm test ```
+```javascript
+npm test
+```
